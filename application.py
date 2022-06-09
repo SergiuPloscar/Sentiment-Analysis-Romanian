@@ -5,8 +5,6 @@ if os.path.exists("Scraped reviews.xlsx"):
     df = pd.read_excel(r'Scraped reviews.xlsx')
     if os.path.isdir("cnn_model"):
         model = load_model("cnn_model")
-        cube = Cube()
-        cube.load("ro")
         with open('tokenizer.json') as f:
             data = json.load(f)
             tokenizer = tokenizer_from_json(data)
@@ -23,7 +21,7 @@ def classify_review():
     review = request.form['review-area']
     if len(review) == 0:
         return jsonify({'error': 'Please input a review'})
-    rating = predict_rating(review, cube, tokenizer, model) + 1
+    rating = predict_rating(review, tokenizer, model) + 1
     return jsonify({'rating': int(rating)})
 
 @application.route('/generate_review', methods=['GET'])
