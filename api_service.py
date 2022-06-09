@@ -8,7 +8,7 @@ import io
 import json
 import numpy as np
 import matplotlib.pyplot as plt
-from wordcloud import WordCloud
+#from wordcloud import WordCloud
 from keras.preprocessing.text import Tokenizer, tokenizer_from_json
 from keras.models import Sequential, Model, load_model
 from keras.layers import Dense, Embedding, Dropout
