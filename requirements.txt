@@ -1,4 +1,7 @@
 Flask==2.1.2
-numpy==1.19.2
+keras==2.9.0
+numpy==1.22.3
 pandas==1.4.2
+scikit_learn==1.1.1
+stopwordsiso==0.6.1
 gunicorn==20.1.0
