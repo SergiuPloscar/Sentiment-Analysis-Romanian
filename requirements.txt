@@ -7,4 +7,5 @@ tensorflow-cpu
 scikit_learn==1.1.1
 stopwordsiso==0.6.1
 protobuf==3.20.*
+openpyxl
 gunicorn==20.1.0
