@@ -3,7 +3,7 @@ keras==2.9.0
 numpy==1.22.3
 pandas==1.4.2
 matplotlib==3.5.2
-tensorflow-cpu==2.2.0
+tensorflow-cpu
 scikit_learn==1.1.1
 stopwordsiso==0.6.1
 protobuf==3.20.*
