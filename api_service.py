@@ -9,15 +9,15 @@ import json
 import numpy as np
 import matplotlib.pyplot as plt
 #from wordcloud import WordCloud
-from keras.preprocessing.text import Tokenizer, tokenizer_from_json
-from keras.models import Sequential, Model, load_model
-from keras.layers import Dense, Embedding, Dropout
-from keras.layers import GlobalMaxPooling1D
-from keras.layers.convolutional import Conv1D
-from keras.utils import pad_sequences
+from tensorflow.keras.preprocessing.text import Tokenizer, tokenizer_from_json
+from tensorflow.keras.models import Sequential, Model, load_model
+from tensorflow.keras.layers import Dense, Embedding, Dropout
+from tensorflow.keras.layers import GlobalMaxPooling1D
+from tensorflow.keras.layers.convolutional import Conv1D
+from tensorflow.keras.utils import pad_sequences
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import StratifiedKFold
-from keras.metrics import Precision, Recall
+from tensorflow.keras.metrics import Precision, Recall
 #from cube.api import Cube
 
 pd.options.mode.chained_assignment = None  # default='warn'
