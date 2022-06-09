@@ -1,0 +1,17 @@
+beautifulsoup4==4.11.1
+cube==0.0.3
+Flask==2.1.2
+fp==0.2
+free_proxy==1.0.6
+keras==2.9.0
+matplotlib==3.5.2
+nlpcube==0.3.1.1
+numpy==1.22.3
+pandas==1.4.2
+requests==2.27.1
+requests_random_user_agent==2022.5.3
+scikit_learn==1.1.1
+stopwordsiso==0.6.1
+urllib3==1.26.9
+wordcloud==1.8.1
+gunicorn==20.1.0
