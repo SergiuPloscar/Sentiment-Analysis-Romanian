@@ -11,12 +11,12 @@ if os.path.exists("Scraped reviews.xlsx"):
         app = Flask(__name__)
 
 
-@application.route('/', methods=['GET'])
+@app.route('/', methods=['GET'])
 def home():
     return render_template("Homepage.html")
 
 
-@application.route('/classify_review', methods=['POST'])
+@app.route('/classify_review', methods=['POST'])
 def classify_review():
     review = request.form['review-area']
     if len(review) == 0:
@@ -24,7 +24,7 @@ def classify_review():
     rating = predict_rating(review, tokenizer, model) + 1
     return jsonify({'rating': int(rating)})
 
-@application.route('/generate_review', methods=['GET'])
+@app.route('/generate_review', methods=['GET'])
 def generate_review():
     review = generate_random_review(df)
     return jsonify({'review': review})
