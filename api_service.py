@@ -18,7 +18,7 @@ from keras.utils import pad_sequences
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import StratifiedKFold
 from keras.metrics import Precision, Recall
-from cube.api import Cube
+#from cube.api import Cube
 
 pd.options.mode.chained_assignment = None  # default='warn'
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -32,7 +32,7 @@ def generate_random_review(dataframe):
     return dataframe['ReviewText'].iloc[review_row]
 
 
-def preprocess_review(review, cube):
+def preprocess_review(review):
     # Preprocesses a review for live prediction
     stopword_list = r'\b(?:{})\b'.format('|'.join(stopwords.stopwords("ro")))
 
@@ -41,19 +41,12 @@ def preprocess_review(review, cube):
     review = review.replace(stopword_list, '')
     review = review.replace(r'\s+', ' ')
     review = review.lower()
-    document = cube(review)
-    lemmatized_review = ""
-    for sentence in document.sentences:
-        for token in sentence.tokens:
-            for word in token.words:
-                lemmatized_review = lemmatized_review + " " + word.lemma
-    review = lemmatized_review
     return review
 
 
-def predict_rating(review, cube, tokenizer, model):
+def predict_rating(review, tokenizer, model):
     # Returns the rating of a live predicted review
-    review = preprocess_review(review, cube)
+    review = preprocess_review(review)
     tokenized_review = tokenizer.texts_to_sequences([review])
     pad_len = 500
     padded_review = pad_sequences(tokenized_review, maxlen=pad_len)
@@ -100,25 +93,8 @@ def preprocess_data(dataframe):
     dataframe = remove_digits(dataframe)
     dataframe = remove_stopwords(dataframe)
     dataframe = make_lowercase(dataframe)
-    dataframe = lemmatize_data(dataframe)
+    #dataframe = lemmatize_data(dataframe)
 
-    return dataframe
-
-
-def lemmatize_data(dataframe):
-    # Lemmatizes all the words in the dataset
-    cube = Cube()
-    cube.load("ro")
-    for i, row in dataframe.iterrows():
-        if row['ReviewText'] != "":
-            document = cube(row['ReviewText'])
-            print(i)
-            lemmatized_review = ""
-            for sentence in document.sentences:
-                for token in sentence.tokens:
-                    for word in token.words:
-                        lemmatized_review = lemmatized_review + " " + word.lemma
-            dataframe.at[i, 'ReviewText'] = lemmatized_review
     return dataframe
 
 
