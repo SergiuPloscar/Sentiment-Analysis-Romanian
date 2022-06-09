@@ -8,7 +8,7 @@ if os.path.exists("Scraped reviews.xlsx"):
         with open('tokenizer.json') as f:
             data = json.load(f)
             tokenizer = tokenizer_from_json(data)
-        application = Flask(__name__)
+        app = Flask(__name__)
 
 
 @application.route('/', methods=['GET'])
