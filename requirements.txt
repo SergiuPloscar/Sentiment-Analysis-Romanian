@@ -1,7 +1,4 @@
-cube==0.0.3
 Flask==2.1.2
-nlpcube==0.3.1.1
 numpy==1.19.2
 pandas==1.4.2
-stopwordsiso==0.6.1
 gunicorn==20.1.0
